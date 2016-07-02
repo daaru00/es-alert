@@ -1,13 +1,13 @@
 var pushover = require( 'pushover-notifications' );
 
-var pushoverBot = new pushover( {
-    user: settings.alerter.pushover.user,
-    token: settings.alerter.pushover.token,
-    onerror: console.error,
-    update_sounds: true
-});
-
 module.exports = function(alert, hits){
+
+    var pushoverBot = new pushover( {
+        user: settings.alerter.pushover.user,
+        token: settings.alerter.pushover.token,
+        onerror: console.error,
+        update_sounds: true
+    });
 
     var str = logdate()+' alert '+alert.name+' fired';
     var values = " ";
