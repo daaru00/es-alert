@@ -1,6 +1,6 @@
 var telegram = require('telegram-bot-api');
 
-module.exports = function(alert, hits){
+module.exports = function(alert, values){
 
     var telegramBot = new telegram({
         token: settings.alerter.telegram.token
@@ -8,8 +8,8 @@ module.exports = function(alert, hits){
 
     var value_html = "Alert <b>"+alert.name+"</b> fired ";
     if(alert.select){
-        hits.forEach(function(hit){
-            value_html += Object.resolve(alert.select, hit._source, true)+"<br>"
+        values.forEach(function(value){
+            value_html += value+"<br>"
         })
     }
 

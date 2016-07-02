@@ -1,6 +1,6 @@
 var pushover = require( 'pushover-notifications' );
 
-module.exports = function(alert, hits){
+module.exports = function(alert, values){
 
     var pushoverBot = new pushover( {
         user: settings.alerter.pushover.user,
@@ -10,17 +10,16 @@ module.exports = function(alert, hits){
     });
 
     var str = logdate()+' alert '+alert.name+' fired';
-    var values = " ";
+    var values_str = " ";
     if(alert.select){
-        hits.forEach(function(hit){
-            var value = Object.resolve(alert.select, hit._source, true);
+        values.forEach(function(value){
             if(value)
-                values += value+" ";
+                values_str += value+" ";
         })
     }
 
     pushoverBot.send({
-        message: values,
+        message: values_str,
         title: str,
         sound: settings.alerter.pushover.sound,
         device: settings.alerter.pushover.device,

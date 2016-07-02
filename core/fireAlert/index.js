@@ -32,9 +32,36 @@ module.exports = function(alert, hits){
 
 }
 
+function elaborateValue(alert, hits){
+    var values = [];
+    if(alert.select){
+        hits.forEach(function(hit){
+            value_str = "";
+            if(alert.select.indexOf(",") != -1){
+                var selects = alert.select.split(",");
+                selects.forEach(function(select){
+                    select = select.trim();
+                    var value = Object.resolve(select, hit._source, true);
+                    if(value)
+                        value_str += " "+value.toString();
+                })
+            }else{
+                var value = Object.resolve(alert.select, hit._source, true);
+                if(value)
+                    value_str = value.toString();
+            }
+            if(value_str.trim() != ""){
+                values.push(value_str);
+            }
+        })
+    }
+    return values;
+}
+
 function fireAlert(alert, hits){
     console.log(logdate()+'firing alert '+alert.name);
+    var values = elaborateValue(alert, hits);
     alert.transports.forEach(function(transport){
-        alerter[transport](alert, hits);
+        alerter[transport](alert, values);
     })
 }

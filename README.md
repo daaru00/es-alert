@@ -55,7 +55,7 @@ Launch installation
 
 Open __settings.json__ file and edit it
 
-```
+```json
 {
     "elasticsearch": {
         "host": "http://localhost:9200",
@@ -94,17 +94,17 @@ Open __settings.json__ file and edit it
 
 Create a new jsonfile inside __alerts__ directory or edit __alerts/cpu_usage.json__ example
 
-```
+```json
 {
-    "name": "CPU Usage > 60%",
+    "name": "HTTP packets in > 10M",
     "frequency": "10s",
     "search": {
-        "index": "topbeat-*",
+        "index": "packetbeat-*",
         "body": {
             "query": {
                 "filtered" : {
                     "query" : {
-                        "term" : { "type" : "system" }
+                        "term" : { "type" : "http" }
                     },
                     "filter" : {
                         "and" : [
@@ -112,7 +112,7 @@ Create a new jsonfile inside __alerts__ directory or edit __alerts/cpu_usage.jso
                                 "range" : {"@timestamp" : {"gte" : "now-10s"}}
                             },
                             {
-                                "range" : {"cpu.user_p" : {"gte" : 0.06}}
+                                "range" : {"bytes_in" : {"gte" : 100}}
                             }
                         ]
                     }
@@ -121,7 +121,7 @@ Create a new jsonfile inside __alerts__ directory or edit __alerts/cpu_usage.jso
             }
         }
     },
-    "select": "beat.hostname",
+    "select": "beat.hostname,path,client_ip",
     "transports": ["log", "email"],
     "noRealert": "10m"
 }
@@ -135,13 +135,17 @@ __frequency__ checking frequency [30s, 1m, 5m, 1h..]
 
 __search__ the elastisearch query object, more option is avaiable here: [Search Operations](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/_search_operations.html) and [Filtered Query](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-filtered-query.html). This is the same paramater as [elasticsearch-js client.search](https://github.com/elastic/elasticsearch-js#examples)
 
-__select__ value to append into log or email content (in this example I used the hostname)
+__select__ value to append into log or email content (in this example I used the hostname), multivalues is also avaiable (separated by comma)
 
 __transports__ log transports, currently log, email, telegram and pushover are avaible, change the global settings into _settings.json_ file
 
 __noRealert__ his is the way through which we control not getting too many alerts for the same alert, one notification every time period [30s, 1m, 5m, 1h..]
 
 ### Transports
+
+__log__ append a row to file on provided path configured in _settings.json_ file, if it not exist will be create
+
+__email__ set server configurations in email setting
 
 __telegram__ activate a new bot and set the _token_ option, set _to_ with @youtusername. You can find more info here: [Telegram bots](https://core.telegram.org/bots)
 

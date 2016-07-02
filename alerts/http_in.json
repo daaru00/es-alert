@@ -1,13 +1,13 @@
 {
-    "name": "CPU Usage > 60%",
+    "name": "HTTP packets in > 10M",
     "frequency": "10s",
     "search": {
-        "index": "topbeat-*",
+        "index": "packetbeat-*",
         "body": {
             "query": {
                 "filtered" : {
                     "query" : {
-                        "term" : { "type" : "system" }
+                        "term" : { "type" : "http" }
                     },
                     "filter" : {
                         "and" : [
@@ -15,7 +15,7 @@
                                 "range" : {"@timestamp" : {"gte" : "now-10s"}}
                             },
                             {
-                                "range" : {"cpu.user_p" : {"gte" : 0.06}}
+                                "range" : {"bytes_in" : {"gte" : 100}}
                             }
                         ]
                     }
@@ -24,7 +24,7 @@
             }
         }
     },
-    "select": "beat.hostname",
+    "select": "beat.hostname,path,client_ip",
     "transports": ["log"],
     "noRealert": "10m"
 }
