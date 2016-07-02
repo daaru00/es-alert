@@ -1,0 +1,39 @@
+#!/usr/bin/nodejs
+
+var path = require("path");
+var exec = require('child_process').exec;
+var pkg = require(path.join(__dirname,'package.json'));
+
+switch (process.argv[2]) {
+    case "-i":
+    case "--install":
+        require(path.join(__dirname,'scripts','install.js'))()
+        break;
+    case "-u":
+    case "--uninstall":
+        require(path.join(__dirname,'scripts','unistall.js'))()
+        break;
+    case "-v":
+    case "--version":
+        console.log(pkg.name+' version:'+pkg.version);
+        break;
+    case "-d":
+    case "--debug":
+        var prc = exec('nodejs '+path.join(__dirname,'service.js'));
+
+        prc.stdout.on('data', function (data) {
+            process.stdout.write(data);
+        });
+
+        prc.stderr.on('data', function (data) {
+            process.stderr.write(data);
+        });
+
+        prc.on('exit', function (code) {
+            console.log('child process exited with code ' + code);
+        });
+
+        break;
+    default:
+        console.log("Usage: app [args]");
+}

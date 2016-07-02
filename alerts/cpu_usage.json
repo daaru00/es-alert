@@ -1,0 +1,30 @@
+{
+    "name": "CPU Usage > 60%",
+    "frequency": "10s",
+    "search": {
+        "index": "topbeat-*",
+        "body": {
+            "query": {
+                "filtered" : {
+                    "query" : {
+                        "term" : { "type" : "system" }
+                    },
+                    "filter" : {
+                        "and" : [
+                            {
+                                "range" : {"@timestamp" : {"gte" : "now-10s"}}
+                            },
+                            {
+                                "range" : {"cpu.user_p" : {"gte" : 0.06}}
+                            }
+                        ]
+                    }
+                }
+
+            }
+        }
+    },
+    "select": "beat.hostname",
+    "transports": ["log", "email"],
+    "noRealert": "10m"
+}

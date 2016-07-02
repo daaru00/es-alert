@@ -1,0 +1,22 @@
+{
+    "elasticsearch": {
+        "host": "http://localhost:9200",
+        "log": false,
+        "maxRetries": 3,
+        "requestTimeout": 30000,
+        "keepAlive": true
+    },
+    "alerter":{
+        "email":{
+            "from": "Elasticsearch Alert",
+            "user": "user@gmail.com",
+            "password": "password",
+            "host": "smtp.gmail.com",
+            "ssl": true,
+            "to": "you@example.com"
+        },
+        "log":{
+            "path": "/path/to/log/alerts.log"
+        }
+    }
+}

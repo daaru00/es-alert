@@ -1,0 +1,30 @@
+{
+  "name": "es-alert",
+  "version": "1.0.0",
+  "description": "Alerting for Elasticsearch",
+  "main": "app",
+  "scripts": {
+    "test": "es-alert --version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daaru00/es-alert.git"
+  },
+  "keywords": [
+    "elasticsearch",
+    "alert"
+  ],
+  "author": "Daaru00",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Daaru00/es-alert/issues"
+  },
+  "homepage": "https://github.com/Daaru00/es-alert",
+  "dependencies": {
+    "elasticsearch": "^11.0.1",
+    "emailjs": "^1.0.5",
+    "moment": "^2.13.0",
+    "node-linux": "^0.1.8",
+    "parse-duration": "^0.1.1"
+  }
+}
