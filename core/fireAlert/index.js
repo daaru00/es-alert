@@ -7,7 +7,8 @@ var alerts_history = [];
 
 var alerter = {
     email: require(path.join(__dirname,'email.js')),
-    log: require(path.join(__dirname,'log.js'))
+    log: require(path.join(__dirname,'log.js')),
+    telegram: require(path.join(__dirname,'telegram.js'))
 }
 
 module.exports = function(alert, hits){
