@@ -75,6 +75,16 @@ Open __settings.json__ file and edit it
         },
         "log":{
             "path": "/path/to/log/alerts.log"
+        },
+        "telegram":{
+            "token": "",
+            "to": "@channelusername"
+        },
+        "pushover":{
+            "user": "",
+            "token": "",
+            "device": "",
+            "sound": "incoming"
         }
     }
 }
@@ -127,9 +137,15 @@ __search__ the elastisearch query object, more option is avaiable here: [Search 
 
 __select__ value to append into log or email content (in this example I used the hostname)
 
-__transports__ log transports, currently log and email is avaible, change the global settings into _settings.json_ file
+__transports__ log transports, currently log, email, telegram and pushover are avaible, change the global settings into _settings.json_ file
 
 __noRealert__ his is the way through which we control not getting too many alerts for the same alert, one notification every time period [30s, 1m, 5m, 1h..]
+
+### Transports
+
+__telegram__ activate a new bot and set the _token_ option, set _to_ with @youtusername. You can find more info here: [Telegram bots](https://core.telegram.org/bots)
+
+__pushover__ register on [pushover.net](https://pushover.net/) set in _settings.json_ user, token and device. You can change the notification sound providing a [sound name](https://pushover.net/api#sounds) in _sound_ settings
 
 ### Launch it
 
