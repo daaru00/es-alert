@@ -15,7 +15,7 @@
                                 "range" : {"@timestamp" : {"gte" : "now-10s"}}
                             },
                             {
-                                "range" : {"bytes_in" : {"gte" : 100}}
+                                "range" : {"bytes_in" : {"gte" : 10240}}
                             }
                         ]
                     }
