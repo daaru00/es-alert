@@ -17,6 +17,10 @@
         },
         "log":{
             "path": "/path/to/log/alerts.log"
+        },
+        "telegram":{
+            "token": "",
+            "to":  "@channelusername"
         }
     }
 }

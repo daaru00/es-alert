@@ -25,6 +25,7 @@
     "emailjs": "^1.0.5",
     "moment": "^2.13.0",
     "node-linux": "^0.1.8",
-    "parse-duration": "^0.1.1"
+    "parse-duration": "^0.1.1",
+    "telegram-bot-api": "^1.1.0"
   }
 }
