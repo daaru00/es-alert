@@ -21,6 +21,12 @@
         "telegram":{
             "token": "",
             "to":  "@channelusername"
+        },
+        "pushover":{
+            "user": "",
+            "token": "",
+            "device": "",
+            "sound": "incoming"
         }
     }
 }

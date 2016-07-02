@@ -26,6 +26,7 @@
     "moment": "^2.13.0",
     "node-linux": "^0.1.8",
     "parse-duration": "^0.1.1",
+    "pushover-notifications": "^0.2.3",
     "telegram-bot-api": "^1.1.0"
   }
 }
