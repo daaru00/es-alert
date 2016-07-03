@@ -7,7 +7,11 @@ module.exports = function(){
     var svc = new Service({
         name: 'es-alert',
         description: 'Alerting for Elasticsearch',
-        script: require('path').join(__dirname, '..', 'service.js')
+        script: require('path').join(__dirname, '..', 'service.js'),
+        env:{
+            name: "MODE",
+            value: "service"
+        }
     });
 
     // Listen for the "install" event, which indicates the

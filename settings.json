@@ -1,4 +1,6 @@
 {
+    "log": true,
+    "logPath": "/var/log/es-alert",
     "elasticsearch": {
         "host": "http://localhost:9200",
         "log": false,

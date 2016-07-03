@@ -22,7 +22,4 @@ global.logdate = function(){
 // Settings
 global.pkg = require(path.join(__dirname,'package.json'));
 
-// Init
-console.log(logdate()+"Starting "+pkg.name+" Service");
-
 require(path.join(__dirname,'core'))()

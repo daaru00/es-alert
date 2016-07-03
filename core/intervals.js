@@ -5,7 +5,7 @@ module.exports = {
     start: function(alerts){
         alerts.forEach(function(alert){
             var ms = str2millisecond(alert.frequency);
-            console.log(logdate()+'started alert checker '+alert.id);
+            core.logger.log(logdate()+'started alert checker '+alert.id);
             intervals.push(setInterval(function(){
                 chkAlertThread(alert);
             }, ms));
@@ -24,6 +24,6 @@ function chkAlertThread(alert){
             core.fireAlert(alert, resp.hits.hits);
         }
     }, function (err) {
-        console.error(err);
+        core.logger.error(err);
     });
 }

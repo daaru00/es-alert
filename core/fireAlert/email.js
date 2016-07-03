@@ -26,6 +26,6 @@ module.exports = function(alert, values){
 
     server.send(message, function(err, message) {
         if(err)
-            console.error(err);
+            core.logger.error(err);
     });
 }

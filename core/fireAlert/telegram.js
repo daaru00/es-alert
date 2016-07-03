@@ -18,8 +18,8 @@ module.exports = function(alert, values){
         parse_mode: "HTML",
         text: value_html
     }).then(function(data){
-        //console.log(data);
+        //core.logger.log(data);
     }).catch(function(err){
-    	console.error(err);
+    	core.logger.error(err);
     });
 }

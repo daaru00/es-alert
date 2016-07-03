@@ -14,6 +14,6 @@ module.exports = function(alert, values){
 
     fs.appendFile(path, str+values_str+os.EOL, function(err){
         if (err)
-            console.error(err);
+            core.logger.error(err);
     });
 }

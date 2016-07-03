@@ -59,7 +59,7 @@ function elaborateValue(alert, hits){
 }
 
 function fireAlert(alert, hits){
-    console.log(logdate()+'firing alert '+alert.name);
+    core.logger.log(logdate()+'firing alert '+alert.name);
     var values = elaborateValue(alert, hits);
     alert.transports.forEach(function(transport){
         alerter[transport](alert, values);

@@ -5,7 +5,7 @@ module.exports = function(alert, values){
     var pushoverBot = new pushover( {
         user: settings.alerter.pushover.user,
         token: settings.alerter.pushover.token,
-        onerror: console.error,
+        onerror: core.logger.error,
         update_sounds: true
     });
 
@@ -26,7 +26,7 @@ module.exports = function(alert, values){
         priority: 1
     }, function( err, result ) {
         if (err) {
-            console.error(err);
+            core.logger.error(err);
         }
     });
 
