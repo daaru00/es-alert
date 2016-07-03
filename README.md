@@ -10,6 +10,13 @@ Basic feature:
 Dependencies:
 
 * [nodejs](https://nodejs.org/en/download/package-manager/)
+* [npm](https://docs.npmjs.com/getting-started/)
+
+install dependencies (on ubuntu)
+
+```bash
+sudo apt-get install nodejs npm
+```
 
 ### Installation
 
