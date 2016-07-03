@@ -57,6 +57,8 @@ Open __settings.json__ file and edit it
 
 ```json
 {
+    "log": true,
+    "logPath": "/var/log/es-alert",
     "elasticsearch": {
         "host": "http://localhost:9200",
         "log": false,
@@ -89,6 +91,7 @@ Open __settings.json__ file and edit it
     }
 }
 ```
+logPath is used to store core log files when it is launched as service
 
 ### Create new alert
 
