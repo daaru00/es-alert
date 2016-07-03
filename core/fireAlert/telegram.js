@@ -8,9 +8,11 @@ module.exports = function(alert, values){
 
     var value_html = "Alert <b>"+alert.name+"</b> fired ";
     if(alert.select){
+        value_html += "<code>";
         values.forEach(function(value){
-            value_html += value+"<br>"
+            value_html += value+" ";
         })
+        value_html += "</code>";
     }
 
     telegramBot.sendMessage({
